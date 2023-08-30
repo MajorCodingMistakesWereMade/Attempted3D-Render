@@ -5,6 +5,7 @@ import itertools
 import threading
 import sys
 
+# https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 
 def wait(a):
     time.sleep(a)
@@ -55,6 +56,41 @@ def animate():
 t = threading.Thread(target=animate)
 t.start()
 
+# https://github.com/encukou/bresenham/blob/master/bresenham.py
+
+def bresenham(x0, y0, x1, y1):
+    """Yield integer coordinates on the line from (x0, y0) to (x1, y1).
+
+    Input coordinates should be integers.
+
+    The result will contain both the start and the end point.
+    """
+    dx = x1 - x0
+    dy = y1 - y0
+
+    xsign = 1 if dx > 0 else -1
+    ysign = 1 if dy > 0 else -1
+
+    dx = abs(dx)
+    dy = abs(dy)
+
+    if dx > dy:
+        xx, xy, yx, yy = xsign, 0, 0, ysign
+    else:
+        dx, dy = dy, dx
+        xx, xy, yx, yy = 0, ysign, xsign, 0
+
+    D = 2*dy - dx
+    y = 0
+
+    for x in range(dx + 1):
+        yield x0 + x*xx + y*yx, y0 + x*xy + y*yy
+        if D >= 0:
+            y += 1
+            D -= 2*dx
+        D += 2*dy
+
+
 #ok back to stuff that is my code
 placeHolderList = []
 placeHolderList2 = []
@@ -63,7 +99,7 @@ loadingBarCount = 0
 randomValue = 0
 acessTableThing = 0
 
-def accessTable(inputTable, xCord, yCord):
+def accessTableLocation(inputTable, xCord, yCord):
     acessTableThing = inputTable[xCord]
     acessTableThing = acessTableThing[yCord]
     return acessTableThing
