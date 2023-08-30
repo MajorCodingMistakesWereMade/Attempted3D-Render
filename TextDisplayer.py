@@ -61,6 +61,12 @@ placeHolderList2 = []
 count = 0
 loadingBarCount = 0
 randomValue = 0
+acessTableThing = 0
+
+def accessTable(inputTable, xCord, yCord):
+    acessTableThing = inputTable[xCord]
+    acessTableThing = acessTableThing[yCord]
+    return acessTableThing
 
 def loadingBar(loadingBarCount):
     #print(f'Step {loadingBarCount}')
