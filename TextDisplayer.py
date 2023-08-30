@@ -42,7 +42,7 @@ testTable3 = [
 
 
 done = False
-#here is the animation
+#NOT MY CODE
 def animate():
     for c in itertools.cycle(['|', '/', '-', '\\']):
         if done:
@@ -50,11 +50,12 @@ def animate():
         sys.stdout.write('\rloading ' + c)
         sys.stdout.flush()
         time.sleep(0.1)
-    sys.stdout.write('\rDone!     ')
+    sys.stdout.write('\Rendered!     ')
 
 t = threading.Thread(target=animate)
 t.start()
 
+#ok back to stuff that is my code
 placeHolderList = []
 placeHolderList2 = []
 count = 0
@@ -79,7 +80,6 @@ def generateString(inputTable):
         else:
             i = "--"
         #print(i)    
-        wait(0.0005)
         loadingBarCount = loadingBar(loadingBarCount)
 
         placeHolderList = placeHolderList + i
@@ -94,11 +94,11 @@ def render(inputTable):
     for i in inputTable:
         randomValue = generateString(i)
         placeHolderList2.append(randomValue)
-        wait(0.005)
         loadingBarCount = loadingBar(loadingBarCount)
+        wait(0.05)
     print("DisplayingImage..")
-    #for i, x in enumerate(placeHolderList2):
-        #print(x)
+    for i, x in enumerate(placeHolderList2):
+        print(x)
         
         
 render(testTable3)
