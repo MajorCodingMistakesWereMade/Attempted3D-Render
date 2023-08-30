@@ -6,9 +6,9 @@ eventually it'll be used in a from-scratch 3D renderer
 
 # issue
 
- line 16, in generateString
-    for i, x in table:
-TypeError: cannot unpack non-iterable int object
+no current issues
 
-line 31, in <module>      
-    generateString(testTable[0])
+# credits
+
+ bresenham algorithim
+ https://github.com/encukou/bresenham/tree/master
