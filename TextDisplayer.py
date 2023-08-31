@@ -104,6 +104,11 @@ def accessTableLocation(inputTable, xCord, yCord):
     acessTableThing = acessTableThing[yCord]
     return acessTableThing
 
+def writeTableLocation(inputTable, xCord, yCord, writeTable):
+    acessTableThing = inputTable[xCord]
+    acessTableThing[yCord] = writeTable
+ 
+
 def loadingBar(loadingBarCount):
     #print(f'Step {loadingBarCount}')
     loadingBarCount += 1
